@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakaton Novine</title>
+  <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    body{
+        background-color: #a8a8a8;
+    }
+
+.registracija-div{
+    width: 40%;
+    border:solid 3px #b63e3e;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #cccccc;
+
+}
+.dugme{
+    background-color: #b63e3e;
+    color:rgb(205,205,205);
+    font-size:19px;
+    align-self: center;
+    text-align: center;
+    margin:10px;
+}
+    .registracija{
+        align-self: center;
+        color: #b63e3e;
+        font-size: 4.5vw;
+        align-content: center;
+        margin-top: 3vw;
+        dispaly:flex;
+        justify-content: center;
+    }
+    .registracija:hover {
+        font-size:5vw;
+        transition: color 0.5s;
+        transition: font-size 0.5s;
+    }
+</style>
+<body>
+
+<nav class="custom-navbar">
+    <div class="custom-navbar-container">
+        <div class="kao-logo">
+            <a href="/"> HakatonNovine.ba</a>
+        </div>
+        <ul class="custom-nav-links mt-3">
+            <li><a href="/view/najnovije">Najnovije</a></li>
+            <li><a href="/view/Kultura">Kultura</a></li>
+            <li><a href="/view/Sport">Sport</a></li>
+            <li><a href="/view/Tehnologija">Tehnologija</a></li>
+            <li><a href="/view/Auto">Automobilizam</a></li>
+        </ul>
+        <div class="custom-search-container">
+            <input type="text" placeholder="Search..." class="custom-search-bar">
+            <button class="custom-search-btn">🔍</button>
+        </div>
+    </div>
+</nav>
+<h2 class="registracija" style="text-align: center">Registruj se</h2>
+<div class="container mt-3 mb-2 registracija-div">
+<form action="/users/register/user" method="POST">
+    <div class="row">
+    <div class="form-group mt-2 col">
+        <label for="firstName mt-2">Ime</label>
+        <input type="text" class="form-control" id="firstName" name="ime" placeholder="Unesite ime" required>
+    </div>
+    <div class="form-group mt-2 col">
+        <label for="lastName">Prezime</label>
+        <input type="text" class="form-control" id="lastName" name="prezime" placeholder="Unesite prezime" required>
+    </div>
+    </div>
+    <div class="row">
+    <div class="form-group mt-2 col">
+        <label for="firstName">Username</label>
+        <input type="text" class="form-control" id="firstName" name="username" placeholder="Unesite ime" required>
+    </div>
+
+    <div class="form-group mt-2 col">
+        <label for="city">Grad</label>
+        <input type="text" class="form-control" id="city" name="grad" placeholder="Unesite grad" required>
+    </div>
+    </div>
+    <div class="row">
+    <div class="form-group mt-2 col">
+        <label for="gender">Spol</label>
+        <select class="form-control" id="gender" name="spol" required>
+            <option value="musko">Muško</option>
+            <option value="zensko">Žensko</option>
+            <option value="drugo">Drugo</option>
+        </select>
+    </div>
+
+    <div class="form-group mt-2 col">
+        <label for="birthDate">Datum rođenja</label>
+        <input type="date" class="form-control" id="birthDate" name="datumrodzenja" required>
+    </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label for="email">Email adresa</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Unesite email" required>
+
+    </div>
+
+    <div class="form-group mt-2">
+        <label for="password">Lozinka</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Unesite lozinku" required>
+    </div>
+
+
+    <small id="emailHelp" class="form-text text-muted">Nećemo dijeliti vaše podatke s drugima.</small><br>
+
+    <button type="submit" class="btn dugme">Registruj se</button>
+</form>
+</div>
+
+
+<footer class ="footer">
+    <div class="container text-center py-3">
+
+        <p>&copy; 2025 All rights reserved.</p>
+        <p>Hakaton iz predmeta Odabranih poglavlja kompjuterskih nauka</p>
+        <p>Naziv projekta: Hakathon novine.  Datum hakatona : 17.1.2025.</p>
+        <p>Studenti: Faris Lindov i Edah Ždralović</p>
+    </div>
+</footer>
+
+</body>
+</html>

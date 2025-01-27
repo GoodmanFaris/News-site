@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komentari</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+body{
+    background-color: lightgrey;
+}
+.naslovi-komentari{color: #b63e3e;
+                    font-size:5vw;}
+.komentari-div{
+    width: 70%;
+}
+.nazad-komentari{
+    background-color: #b63e3e;
+    color:#333333;
+    margin-bottom: 5vw;
+
+}
+.objavi-kom-dugme{
+    align-self: center;
+    color: #b63e3e;
+    background-color: #333333;
+    font-size: 2vw;
+    align-content: center;
+
+    dispaly:flex;
+    justify-content: center;
+}
+.objavi-kom-dugme:hover {
+    font-size:2.2vw;
+    background-color: #a8a8a8;
+    transition: color 0.5s;
+    transition: font-size 0.5s;
+}
+
+
+</style>
+<body>
+<div class="container mt-5 komentari-div">
+    <h1 class="text-center mb-4 naslovi-komentari">Komentari</h1>
+
+    <!-- Forma za dodavanje komentara -->
+    <div class="card mb-4 shadow">
+        <div class="card-body">
+            <h5 class="card-title"> Napišite svoj komentar na ovu objavu</h5>
+            <form action="/Komentari/dodaj/<%= clanak_id%>" method="POST">
+                <div class="mb-3">
+                    <label for="komentar" class="form-label">Vaš komentar</label>
+                    <textarea class="form-control" id="komentar" name="poruka" rows="3" placeholder="Napišite komentar..." required></textarea>
+                </div>
+                <button type="submit" class="btn objavi-kom-dugme">Objavi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Prikaz komentara -->
+    <% if (info.length === 0) { %>
+        <div class="alert alert-info text-center" role="alert">
+            Nema komentara za ovaj članak.
+        </div>
+    <% } else { %>
+        <% info.forEach(komentar => { %>
+            <div class="card mb-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title"><strong><%= komentar.username %></strong></h5>
+                    <p class="card-text"><%= komentar.poruka %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="badge bg-success">Lajkovi: <%= komentar.lajk %> </span>
+                            <form action="/lajkuj/<%= komentar.poruka %>/<%= komentar.clanak_id%>" method="POST">
+                                <button type="submit" class="btn btn-success">👍</button>
+                            </form>
+                            <span class="badge bg-danger">Dislajkovi: <%= komentar.dislajk %></span>
+                            <form action="/dislajk/<%= komentar.poruka %>/<%= komentar.clanak_id%>" method="POST">
+                                <button type="submit" class="btn btn-danger">👎</button>
+                            </form>
+                        </div>
+                        <small class="text-muted"><%= new Date(komentar.datum).toLocaleDateString() %></small>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    <% } %>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn nazad-komentari">Nazad na početnu stranicu</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<footer class ="footer">
+    <div class="container text-center py-3">
+
+        <p>&copy; 2025 All rights reserved.</p>
+        <p>Hakaton iz predmeta Odabranih poglavlja kompjuterskih nauka</p>
+        <p>Naziv projekta: Hakathon novine.  Datum hakatona : 17.1.2025.</p>
+        <p>Studenti: Faris i Edah</p>
+    </div>
+</footer>
+</body>
+</html>
